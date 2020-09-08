@@ -72,5 +72,10 @@ public class YuanGongBiao {
 	public void setYifuwu(String yifuwu) {
 		this.yifuwu = yifuwu;
 	}
+	@Override
+	public String toString() {
+		return "YuanGongBiao [id=" + id + ", name=" + name + ", sex=" + sex + ", age=" + age + ", xingge=" + xingge
+				+ ", jineng=" + jineng + ", leibie=" + leibie + ", yifuwu=" + yifuwu + "]";
+	}
 	
 }
