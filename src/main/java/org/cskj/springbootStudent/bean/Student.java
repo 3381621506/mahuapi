@@ -65,6 +65,11 @@ public class Student {
 	public void setStuCou(List<StuCou> stuCou) {
 		this.stuCou = stuCou;
 	}
+	@Override
+	public String toString() {
+		return "Student [sid=" + sid + ", username=" + username + ", password=" + password + ", sex=" + sex + ", age="
+				+ age + ", hobby=" + hobby + ", stuCou=" + stuCou + "]";
+	}
 	
 	
 }
