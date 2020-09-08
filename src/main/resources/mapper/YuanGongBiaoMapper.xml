@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.cskj.springbootStudent.mapper.YuanGongBiaoMapper">
+	<select id="queryBiaoAll" resultType="YuanGongBiao">
+		select * from yuangongbiao
+	</select>
+	<insert id="addBiao">
+		insert into yuangongbiao values(null,#{name},#{sex},#{age},#{xingge},#{jineng},#{leibie},#{yifuwu})
+	</insert>
+	<delete id="deleteBiao">
+		delete from yuangongbiao where id = #{id}
+	</delete>
+</mapper>

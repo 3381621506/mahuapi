@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.cskj.springbootStudent.mapper.StudentMapper">
+	<resultMap type="student" id="baseStudentMap">
+		<id column="sid" property="sid"/>
+		<result column="username" property="username"/>
+		<result column="password" property="password"/>
+		<result column="sex" property="sex"/>
+		<result column="age" property="age"/>
+		<result column="hobby" property="hobby"/>
+		<!-- <collection property="stuCou" ofType="stuCou" resultMap="baseStuCouMap"></collection> -->
+	</resultMap>
+	
+	<resultMap type="student" id="queryStudentAllMap">
+		<id column="sid" property="sid"/>
+		<result column="username" property="username"/>
+		<result column="password" property="password"/>
+		<result column="sex" property="sex"/>
+		<result column="age" property="age"/>
+		<result column="hobby" property="hobby"/>
+		<collection property="stuCou" ofType="stuCou" resultMap="baseStuCouMap"></collection>
+	</resultMap>
+	
+	<resultMap type="stuCou" id="baseStuCouMap">
+		<id column="id" property="id"/>
+		<result column="score" property="score"/>
+		<association property="student" javaType="student" resultMap="baseStudentMap"></association>
+		<association property="course" javaType="course" resultMap="baseCourseMap"></association>
+	</resultMap>
+	<resultMap type="course" id="baseCourseMap">
+		<id column="cid" property="cid"/>
+		<result column="cname" property="cname"/>
+	</resultMap>
+	<select id="queryStudentAll" resultMap="queryStudentAllMap">
+		select * from student s join stu_cou sc on s.sid=sc.sid join course c on c.cid=sc.cid
+	</select>
+	<select id="login" resultMap="baseStudentMap" parameterType="student">
+		select * from student where username=#{username} and password=#{password}
+	</select>
+	<insert id="addStudent" useGeneratedKeys="true" keyProperty="sid">
+		insert into student values(null,#{username},#{password},#{sex},#{age},#{hobby})
+	</insert>
+	<insert id="addStuCou">
+		insert into stu_cou(sid,cid) values(#{sid},#{st})
+	</insert>
+</mapper>
