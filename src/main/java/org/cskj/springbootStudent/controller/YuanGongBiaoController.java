@@ -17,6 +17,7 @@ public class YuanGongBiaoController {
 	@GetMapping(value="queryBiaoAll")
 	public List<YuanGongBiao> queryBiaoAll(){
 		List<YuanGongBiao> list= ys.queryBiaoAll();
+		System.out.println("3344");
 		return list;
 		
 	}
